@@ -1,7 +1,7 @@
 #define LAYER_MAIN 0
-#define LAYER_SYMB 1
-#define LAYER_MOUSE 2
-#define LAYER_NMPAD 3
+#define LAYER_NMPAD 1
+#define LAYER_SYMB 2
+#define LAYER_MOUSE 3
 #define LAYER_FN 4
 
 #include <behaviors.dtsi>
@@ -12,7 +12,7 @@
 #include <dt-bindings/zmk/rgb.h>
 
 &mt {
-    tapping-term-ms = <360>; // 360 ms
+    tapping-term-ms = <500>; // milliseconds
 };
 
 / {
@@ -25,13 +25,26 @@
 				&kp TAB          &kp Q        &kp W          &kp E        &kp R        &kp T          &kp K_APPLICATION &kp C_PAUSE     &kp Y           &kp U         &kp I                  &kp O                 &kp P                          &kp BACKSLASH
 				&kp ESCAPE       &kp A        &kp S          &kp D        &kp F        &kp G                                            &kp H           &kp J         &kp K                  &kp L                 &mt DOUBLE_QUOTES SINGLE_QUOTE &kp BACKSPACE
 				&kp LEFT_CONTROL &kp Z        &kp X          &kp C        &kp V        &kp B          &kp MINUS         &kp EQUAL       &kp N           &kp M         &mt LEFT_BRACKET COMMA &mt LEFT_BRACE PERIOD &kp SLASH                      &kp RIGHT_CONTROL
-				&to LAYER_NMPAD  &kp UP_ARROW &kp DOWN_ARROW &kp LEFT_ALT &kp LEFT_GUI                                                                  &kp RIGHT_GUI &kp RIGHT_ALT          &kp LEFT_ARROW        &kp RIGHT_ARROW                &to LAYER_NMPAD
+				&to LAYER_NMPAD  &kp UP_ARROW &kp DOWN_ARROW &kp LEFT_GUI &kp LEFT_ALT                                                                  &kp RIGHT_ALT &kp RIGHT_GUI          &kp LEFT_ARROW        &kp RIGHT_ARROW                &to LAYER_NMPAD
 				                                                                       &kp HOME       &kp END           &kp PAGE_UP     &kp K_PASTE
 				                                                          &kp RETURN   &kp LEFT_SHIFT &kp DELETE        &kp PAGE_DOWN   &kp RIGHT_SHIFT &kp SPACE
 				                                                                                      &mo LAYER_NMPAD   &mo LAYER_NMPAD
 			>;
 		};
 		layer_1 {
+			bindings = <
+				&bootloader
+				&trans         &kp C_BRIGHTNESS_DEC &kp C_BRIGHTNESS_INC &kp C_VOLUME_DOWN &kp C_VOLUME_UP   &kp C_MUTE        &trans            &kp INSERT     &kp SLASH    &kp NUMBER_7     &kp NUMBER_8      &kp NUMBER_9   &kp NUMBER_0     &kp BACKSPACE
+				&trans         &none                &trans               &kp UP_ARROW      &kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp C_VOLUME_UP   &kp UNDERSCORE &kp ASTERISK &kp NUMBER_4     &kp NUMBER_5      &kp NUMBER_6   &kp SINGLE_QUOTE &trans
+				&trans         &trans               &kp LEFT_ARROW       &kp DOWN_ARROW    &kp RIGHT_ARROW   &kp SINGLE_QUOTE                                   &kp MINUS    &kp NUMBER_1     &kp NUMBER_2      &kp NUMBER_3   &kp SEMICOLON    &kp DELETE
+				&trans         &kp SLASH            &kp ASTERISK         &kp MINUS         &kp PLUS          &kp PERIOD        &kp C_VOLUME_DOWN &kp EQUAL      &kp PLUS     &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_BRACE &kp RIGHT_BRACE  &trans
+				&to LAYER_MAIN &to LAYER_MOUSE      &trans               &trans            &trans                                                                            &trans           &trans            &to LAYER_SYMB &to LAYER_FN     &to LAYER_MAIN
+				                                                                                             &trans            &trans            &trans         &trans
+				                                                                           &trans            &trans            &trans            &trans         &trans       &trans
+				                                                                                                               &trans            &trans
+			>;
+		};
+		layer_2 {
 			bindings = <
 				&bootloader
 				&trans &trans &trans &trans           &trans            &trans &trans         &trans           &trans &trans         &trans          &trans &trans &trans
@@ -44,7 +57,7 @@
 				                                                               &trans         &trans
 			>;
 		};
-		layer_2 {
+		layer_3 {
 			bindings = <
 				&bootloader
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans         &trans          &trans         &trans          &trans &trans
@@ -55,19 +68,6 @@
 				                                   &trans &trans &trans &trans
 				                            &trans &trans &trans &trans &trans         &trans
 				                                          &trans &trans
-			>;
-		};
-		layer_3 {
-			bindings = <
-				&bootloader
-				&trans         &kp C_BRIGHTNESS_DEC &kp C_BRIGHTNESS_INC &kp C_VOLUME_DOWN &kp C_VOLUME_UP   &kp C_MUTE        &trans            &kp INSERT     &kp SLASH    &kp NUMBER_7     &kp NUMBER_8      &kp NUMBER_9   &kp NUMBER_0     &kp BACKSPACE
-				&trans         &none                &kp UP_ARROW         &none             &kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp C_VOLUME_UP   &kp UNDERSCORE &kp ASTERISK &kp NUMBER_4     &kp NUMBER_5      &kp NUMBER_6   &kp SINGLE_QUOTE &kp DELETE
-				&trans         &kp LEFT_ARROW       &kp DOWN_ARROW       &kp RIGHT_ARROW   &kp SINGLE_QUOTE  &kp SINGLE_QUOTE                                   &kp MINUS    &kp NUMBER_1     &kp NUMBER_2      &kp NUMBER_3   &kp SEMICOLON    &kp PERIOD
-				&trans         &kp SLASH            &kp ASTERISK         &kp MINUS         &kp PLUS          &kp PERIOD        &kp C_VOLUME_DOWN &kp EQUAL      &kp PLUS     &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_BRACE &kp RIGHT_BRACE  &trans
-				&to LAYER_MAIN &to LAYER_MOUSE      &trans               &trans            &trans                                                                            &trans           &trans            &to LAYER_SYMB &to LAYER_FN     &to LAYER_MAIN
-				                                                                                             &trans            &trans            &trans         &trans
-				                                                                           &trans            &trans            &trans            &trans         &trans       &trans
-				                                                                                                               &trans            &trans
 			>;
 		};
 		layer_4 {
